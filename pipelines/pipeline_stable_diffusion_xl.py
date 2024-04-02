@@ -1120,7 +1120,8 @@ class StableDiffusionXLPipeline(
 
                 if image is not None:
                     zt = self.prepare_img_latents(z0,t.repeat(1),1, num_images_per_prompt,prompt_embeds.dtype,device,generator,True)# add_noise/
-                    
+                    print('latents', latents.shape)
+                    print('zt', zt.shape)
                     latents[0] = zt[0] 
 
                 # expand the latents if we are doing classifier free guidance
