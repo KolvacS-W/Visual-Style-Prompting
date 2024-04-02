@@ -31,15 +31,16 @@ def create_nested_list(t):
 
 def create_prompt(style_name):
     pre_prompt_dicts = {
-        "kids drawing": ("kids drawing of {prompt}. crayon, colored pencil, marker", ""),
-        "self portrait": ("{prompt} of van gogh", ""),
-        "Sunflowers": ("{prompt} of van gogh", ""),
-        "The kiss": ("{prompt} of gustav klimt", ""),
-        "Vitruvian Man": ("{prompt} of leonardo da vinci", ""),
-        "Weeping woman": ("{prompt} of pablo picasso", ""),
-        "The scream": ("{prompt} of edvard munch", ""),
+        # "kids drawing": ("kids drawing of {prompt}. crayon, colored pencil, marker", ""),
+        # "self portrait": ("{prompt} of van gogh", ""),
+        # "Sunflowers": ("{prompt} of van gogh", ""),
+        # "The kiss": ("{prompt} of gustav klimt", ""),
+        # "Vitruvian Man": ("{prompt} of leonardo da vinci", ""),
+        # "Weeping woman": ("{prompt} of pablo picasso", ""),
+        # "The scream": ("{prompt} of edvard munch", ""),
         "The starry night": ("{prompt} of van gogh", ""),
-        "Starry night over the rhone": ("{prompt} of van gogh", "")
+        # "spr": ("generative art of {prompt}", ""),
+        # "Starry night over the rhone": ("{prompt} of van gogh", "")
     }
 
     if style_name in pre_prompt_dicts.keys():
@@ -120,6 +121,10 @@ with torch.no_grad():
 
         latents = torch.cat(latents, dim=0)
 
+        print('ref_prompt', ref_prompt)
+        print('inf_prompt', inf_prompt)
+        print('imgsize', real_img.size)
+        print('latent', latents.shape)
         images = pipe(
             prompt=ref_prompt,
             guidance_scale=guidance_scale,
